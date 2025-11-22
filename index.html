@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaman Öğrenci Rehberi | TÜBİTAK 2209-A</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --logo-bg: #ffffff;
+        }
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --logo-bg: #1e1e1e;
+        }
+        body.dark-mode .text-muted { color: #adb5bd !important; }
+        body.dark-mode .text-dark { color: #fff !important; }
+        body.dark-mode .bg-light { background-color: #2c2c2c !important; }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            color: var(--text-color);
+            transition: background-color 0.3s;
+            /* Index sayfasında PHP ile transparent yapılacak */
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: linear-gradient(135deg, #2561c2 0%, #1a458c 100%);
+            min-height: 80px;
+            box-shadow: 0 4px 20px rgba(37, 97, 194, 0.3);
+            z-index: 9999; 
+            position: relative;
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            opacity: 0.8; /* Pasifken biraz sönük */
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Hover ve Aktif Durumu */
+        .navbar-nav .nav-link:hover, 
+        .navbar-nav .nav-link.active { /* .active sınıfı burayı tetikler */
+            opacity: 1;
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255,255,255,0.6); /* Parlama efekti */
+            color: #fff !important;
+            border-bottom: 2px solid rgba(255,255,255,0.5); /* Altına çizgi çekelim belli olsun */
+        }
+
+        /* LOGO */
+        .badge-logo-container {
+            position: absolute; top: 10px; left: 20px; width: 110px; height: 110px;
+            background-color: var(--logo-bg); border-radius: 50%; padding: 5px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25); z-index: 10001;
+            display: flex; align-items: center; justify-content: center; transition: all 0.3s;
+        }
+        .badge-logo-container:hover { transform: scale(1.1) rotate(3deg); }
+        .badge-logo-container img { width: 100%; height: auto; border-radius: 50%; }
+
+        /* MOBİL */
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                background-color: #1a458c; padding: 20px; border-radius: 0 0 15px 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: absolute; top: 100%; left: 0; width: 100%; z-index: 9998;
+            }
+            .badge-logo-container { position: static; width: 50px; height: 50px; margin-right: 10px; box-shadow: none; padding: 0; background: transparent; }
+            .navbar-brand-text { display: block !important; font-size: 1.2rem; }
+            .navbar-nav .nav-link { padding: 10px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .btn-login-custom { width: 100%; margin-top: 15px; }
+        }
+        @media (min-width: 993px) { .navbar-brand-text { display: none; } }
+
+        .btn-login-custom { background-color: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.5); color: white; transition: all 0.3s; }
+        .btn-login-custom:hover { background-color: #fff; color: #2561c2; }
+        .theme-toggle-btn { background: transparent; border: none; color: rgba(255,255,255,0.8); font-size: 1.2rem; cursor: pointer; }
+        .theme-toggle-btn:hover { color: #fff; transform: rotate(15deg); }
+
+        /* Index Sayfası Kontrolü (Arka Plan) */
+                    body { background-color: transparent !important; }
+        
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+  <div class="container-fluid px-4">
+    <div class="badge-logo-container"><a href="index.php"><img src="img/logo_resmi.svg" alt="Logo"></a></div>
+    <a class="navbar-brand navbar-brand-text d-none fw-bold" href="index.php">Kaman Rehberi</a>
+    <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase align-items-center">
+        
+        
+        <li class="nav-item">
+            <a class="nav-link px-3 active" href="index.php">ANA SAYFA</a>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=saglik">SAğLıK</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=ulasim">ULAşıM</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=barinma">BARıNMA</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=yeme-icme">YEME & İçME</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=gezilecek-yerler">GEZILECEK YERLER</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=resmi-kurumlar">RESMI KURUMLAR</a></li>        
+        <li class="nav-item ms-2"><button class="theme-toggle-btn px-3" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+        <li class="nav-item ms-3"><a href="admin/login.php" class="btn btn-login-custom rounded-pill px-4 fw-bold">Giriş Yap</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const icon = toggleBtn.querySelector('i');
+    const body = document.body;
+    if (localStorage.getItem('darkMode') === 'enabled') { body.classList.add('dark-mode'); icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if (body.classList.contains('dark-mode')) { localStorage.setItem('darkMode', 'enabled'); icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+        else { localStorage.setItem('darkMode', 'disabled'); icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    });
+</script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
+<div class="hero-section d-flex align-items-center justify-content-center text-center text-white" style="min-height: 100vh; position: relative; overflow: hidden;">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100" data-bs-interval="5000"><img src="img/sliders/slide_1763541507.webp" class="d-block w-100 h-100" style="object-fit: cover;"></div>        </div>
+    </div>
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: -1;"></div>
+    <div class="container hero-content" style="z-index: 1;">
+        <h1 class="display-3 fw-bold mb-3">Kaman'a Hoş Geldin!</h1>
+        <div class="row justify-content-center"><div class="col-lg-8"><p class="lead mb-4 opacity-100 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Kırşehir Ahi Evran Üniversitesi öğrencileri için hazırlanan kapsamlı yaşam rehberi.</p></div></div>
+        <a href="kesfet.php" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold mt-3 shadow-lg" style="background-color: #2561c2; border: none;">
+        <i class="fas fa-compass me-2"></i> Keşfetmeye Başla
+</a>
+    </div>
+</div>
+
+<div id="kategoriler" class="position-relative bg-white shadow-lg py-5" style="z-index: 10;">
+    <div class="curve-container" style="position: absolute; top: -50px; left: 0; width: 100%; height: 50px; overflow: hidden;"><div class="curve-shape" style="width: 150%; height: 100%; background: white; border-radius: 50% 50% 0 0 / 100% 100% 0 0; position: absolute; left: -25%; top: 0;"></div></div>
+    
+    <div class="container scroll-margin-top pt-3">
+        <div class="text-center mb-5">
+            <span class="text-uppercase text-primary fw-bold small tracking-wider">REHBER KATEGORİLERİ</span>
+            <h2 class="fw-bold text-dark display-6 mt-2">Şehri Keşfet</h2>
+        </div>
+
+        <div class="swiper mySwiper px-2 py-4"> 
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                            <div class="card-body">
+                                <div class="icon-box mb-3" style="color: #d20f0f;">
+                                    <i class="fas fa-hospital fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Sağlık</h4>
+                                <p class="card-text text-muted small">Kaman'daki sağlık seçeneklerini listele.</p>
+                                <a href="kategori.php?slug=saglik" 
+                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
+                                   style="border: 2px solid #d20f0f; color: #d20f0f; background: transparent;"
+                                   onmouseover="this.style.background='#d20f0f'; this.style.color='white';"
+                                   onmouseout="this.style.background='transparent'; this.style.color='#d20f0f';">
+                                   İncele
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                            <div class="card-body">
+                                <div class="icon-box mb-3" style="color: #12e23c;">
+                                    <i class="fas fa-bus fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Ulaşım</h4>
+                                <p class="card-text text-muted small">Kaman'daki ulaşım seçeneklerini listele.</p>
+                                <a href="kategori.php?slug=ulasim" 
+                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
+                                   style="border: 2px solid #12e23c; color: #12e23c; background: transparent;"
+                                   onmouseover="this.style.background='#12e23c'; this.style.color='white';"
+                                   onmouseout="this.style.background='transparent'; this.style.color='#12e23c';">
+                                   İncele
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                            <div class="card-body">
+                                <div class="icon-box mb-3" style="color: #129de2;">
+                                    <i class="fas fa-home fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Barınma</h4>
+                                <p class="card-text text-muted small">Kaman'daki barınma seçeneklerini listele.</p>
+                                <a href="kategori.php?slug=barinma" 
+                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
+                                   style="border: 2px solid #129de2; color: #129de2; background: transparent;"
+                                   onmouseover="this.style.background='#129de2'; this.style.color='white';"
+                                   onmouseout="this.style.background='transparent'; this.style.color='#129de2';">
+                                   İncele
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                            <div class="card-body">
+                                <div class="icon-box mb-3" style="color: #f5930a;">
+                                    <i class="fas fa-utensils fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Yeme & İçme</h4>
+                                <p class="card-text text-muted small">Kaman'daki yeme & İçme seçeneklerini listele.</p>
+                                <a href="kategori.php?slug=yeme-icme" 
+                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
+                                   style="border: 2px solid #f5930a; color: #f5930a; background: transparent;"
+                                   onmouseover="this.style.background='#f5930a'; this.style.color='white';"
+                                   onmouseout="this.style.background='transparent'; this.style.color='#f5930a';">
+                                   İncele
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                            <div class="card-body">
+                                <div class="icon-box mb-3" style="color: #8310d1;">
+                                    <i class="fas fa-camera fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Gezilecek Yerler</h4>
+                                <p class="card-text text-muted small">Kaman'daki gezilecek yerler seçeneklerini listele.</p>
+                                <a href="kategori.php?slug=gezilecek-yerler" 
+                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
+                                   style="border: 2px solid #8310d1; color: #8310d1; background: transparent;"
+                                   onmouseover="this.style.background='#8310d1'; this.style.color='white';"
+                                   onmouseout="this.style.background='transparent'; this.style.color='#8310d1';">
+                                   İncele
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                            <div class="card-body">
+                                <div class="icon-box mb-3" style="color: #828282;">
+                                    <i class="fas fa-building fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Resmi Kurumlar</h4>
+                                <p class="card-text text-muted small">Kaman'daki resmi kurumlar seçeneklerini listele.</p>
+                                <a href="kategori.php?slug=resmi-kurumlar" 
+                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
+                                   style="border: 2px solid #828282; color: #828282; background: transparent;"
+                                   onmouseover="this.style.background='#828282'; this.style.color='white';"
+                                   onmouseout="this.style.background='transparent'; this.style.color='#828282';">
+                                   İncele
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+            <div class="swiper-button-next custom-nav-btn"></div><div class="swiper-button-prev custom-nav-btn"></div><div class="swiper-pagination custom-pagination"></div>
+        </div>
+
+        <div class="row mt-5 pt-5 align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <span class="badge bg-primary mb-2">YENİ TEKNOLOJİ</span>
+                <h2 class="fw-bold display-6">Eşyalar Odanıza Sığacak Mı?</h2>
+                <p class="lead text-muted">Artırılmış Gerçeklik (AR) teknolojisi ile mobilyaları satın almadan önce kendi odanızda görün.</p>
+                <ul class="list-unstyled text-muted mt-3">
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Kamerayı açın ve deneyin.</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Ürünü 360 derece inceleyin.</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> %100 Gerçek boyutlar.</li>
+                </ul>
+                <button class="btn btn-dark btn-lg rounded-pill mt-3" onclick="document.getElementById('ar-button').click()">
+                    <i class="fas fa-cube me-2"></i> Şimdi Dene
+                </button>
+            </div>
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-lg overflow-hidden" style="border-radius: 30px;">
+                    <model-viewer 
+                        src="/kaman_rehberi/img/koltuk.glb" 
+                        ios-src="/kaman_rehberi/img/koltuk.usdz" 
+                        alt="3D Mobilya Modeli" 
+                        ar 
+                        ar-modes="webxr scene-viewer quick-look" 
+                        camera-controls 
+                        auto-rotate 
+                        shadow-intensity="1" 
+                        style="width: 100%; height: 500px; background-color: #f8f9fa;">
+                        
+                    </model-viewer>
+                </div>
+            </div>
+        </div>
+        </div>
+    <footer class="bg-dark text-white text-center py-4 mt-5"><div class="container"><small>&copy; 2025 Kaman Rehberi</small></div></footer>
+</div>
+
+<style>
+    /* Hero Yüksekliği */
+    .hero-section { min-height: 85vh; }
+
+    /* Scroll Margin */
+    .scroll-margin-top { scroll-margin-top: 100px; }
+
+    /* Slider Kartları */
+    .kategori-kart {
+        border-radius: 20px;
+        background: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #f0f0f0 !important;
+    }
+    .kategori-kart:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(37, 97, 194, 0.15) !important;
+        border-color: #2561c2 !important;
+    }
+
+    /* --- YENİ VE HAVALI SLIDER BUTONLARI --- */
+    .custom-nav-btn {
+        background-color: #fff;
+        width: 55px; 
+        height: 55px;
+        border-radius: 50%;
+        border: 2px solid #f8f9fa;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        color: #2561c2 !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        opacity: 0.9;
+        display: flex; align-items: center; justify-content: center; 
+    }
+
+    .custom-nav-btn:after {
+        font-size: 20px !important; 
+        font-weight: 900;
+    }
+
+    .custom-nav-btn:hover {
+        background-color: #2561c2;
+        border-color: #2561c2;
+        color: #fff !important;
+        opacity: 1;
+        transform: scale(1.15); 
+        box-shadow: 0 15px 30px rgba(37, 97, 194, 0.4); 
+    }
+
+    @media (max-width: 768px) { .custom-nav-btn { display: none; } }
+    
+    /* Model Viewer İlerleme Çubuğu */
+    model-viewer::part(default-progress-bar) {
+         background-color: #2561c2; 
+         height: 5px;
+    }
+
+    .swiper-pagination-bullet { width: 10px; height: 10px; background-color: #cbd5e1; opacity: 1; transition: all 0.3s ease; }
+    .swiper-pagination-bullet-active { width: 30px; border-radius: 5px; background-color: #2561c2; }
+    .swiper-pagination { bottom: 0px !important; }
+    
+    .swiper { padding-bottom: 50px !important; padding-left: 10px; padding-right: 10px; }
+
+    /* Dark Mode Uyumluluğu */
+    body.dark-mode #kategoriler { background-color: #121212 !important; }
+    body.dark-mode .curve-shape { background: #121212 !important; }
+    
+    /* Index Sayfasına Özel Arka Plan Ayarı */
+    html, body { background-color: transparent !important; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 25, loop: true, grabCursor: true, autoplay: { delay: 3500 }, pagination: { el: ".swiper-pagination", clickable: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, breakpoints: { 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
+</script>
+</body>
+</html>
