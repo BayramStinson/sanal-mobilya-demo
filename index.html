@@ -221,9 +221,9 @@
             <div class="col-lg-7">
                 <div class="card border-0 shadow-lg overflow-hidden" style="border-radius: 30px;">
                     
-                    <model-viewer 
-                        src="mobilya-demo/img/koltuk.glb" 
-                        ios-src="mobilya-demo/img/koltuk.usdz" 
+                   <model-viewer 
+                        src="img/koltuk.glb" 
+                        ios-src="img/koltuk.usdz" 
                         alt="3D Mobilya Modeli" 
                         ar 
                         ar-modes="webxr scene-viewer quick-look" 
@@ -231,6 +231,12 @@
                         auto-rotate 
                         shadow-intensity="1" 
                         style="width: 100%; height: 500px; background-color: #f8f9fa;">
+                        
+                        <button slot="ar-button" id="ar-button" class="btn btn-primary fw-bold position-absolute bottom-0 end-0 m-3 rounded-pill shadow-sm">
+                            <i class="fas fa-camera me-2"></i> Odamda Gör
+                        </button>
+
+                    </model-viewer>
                         
                         <button slot="ar-button" id="ar-button" class="btn btn-primary fw-bold position-absolute bottom-0 end-0 m-3 rounded-pill shadow-sm">
                             <i class="fas fa-camera me-2"></i> Odamda Gör
@@ -320,3 +326,4 @@
 </script>
 </body>
 </html>
+
