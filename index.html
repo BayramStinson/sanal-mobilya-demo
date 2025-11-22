@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -29,7 +28,7 @@
             width: 100%;
             color: var(--text-color);
             transition: background-color 0.3s;
-            /* Index sayfasında PHP ile transparent yapılacak */
+            background-color: transparent !important;
         }
 
         /* NAVBAR */
@@ -44,20 +43,19 @@
         .navbar-nav .nav-link {
             position: relative;
             transition: all 0.3s ease;
-            opacity: 0.8; /* Pasifken biraz sönük */
+            opacity: 0.8;
             font-weight: 600;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
         }
         
-        /* Hover ve Aktif Durumu */
         .navbar-nav .nav-link:hover, 
-        .navbar-nav .nav-link.active { /* .active sınıfı burayı tetikler */
+        .navbar-nav .nav-link.active { 
             opacity: 1;
             transform: translateY(-2px);
-            text-shadow: 0 0 10px rgba(255,255,255,0.6); /* Parlama efekti */
+            text-shadow: 0 0 10px rgba(255,255,255,0.6);
             color: #fff !important;
-            border-bottom: 2px solid rgba(255,255,255,0.5); /* Altına çizgi çekelim belli olsun */
+            border-bottom: 2px solid rgba(255,255,255,0.5);
         }
 
         /* LOGO */
@@ -88,9 +86,6 @@
         .theme-toggle-btn { background: transparent; border: none; color: rgba(255,255,255,0.8); font-size: 1.2rem; cursor: pointer; }
         .theme-toggle-btn:hover { color: #fff; transform: rotate(15deg); }
 
-        /* Index Sayfası Kontrolü (Arka Plan) */
-                    body { background-color: transparent !important; }
-        
     </style>
 </head>
 <body>
@@ -104,12 +99,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase align-items-center">
         
-        
         <li class="nav-item">
             <a class="nav-link px-3 active" href="index.php">ANA SAYFA</a>
         </li>
         
-        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=saglik">SAğLıK</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=ulasim">ULAşıM</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=barinma">BARıNMA</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=yeme-icme">YEME & İçME</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=gezilecek-yerler">GEZILECEK YERLER</a></li><li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=resmi-kurumlar">RESMI KURUMLAR</a></li>        
+        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=saglik">SAĞLIK</a></li>
+        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=ulasim">ULAŞIM</a></li>
+        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=barinma">BARINMA</a></li>
+        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=yeme-icme">YEME & İÇME</a></li>
+        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=gezilecek-yerler">GEZİLECEK YERLER</a></li>
+        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=resmi-kurumlar">RESMİ KURUMLAR</a></li>        
         <li class="nav-item ms-2"><button class="theme-toggle-btn px-3" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
         <li class="nav-item ms-3"><a href="admin/login.php" class="btn btn-login-custom rounded-pill px-4 fw-bold">Giriş Yap</a></li>
       </ul>
@@ -128,12 +127,14 @@
         else { localStorage.setItem('darkMode', 'disabled'); icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
     });
 </script>
+
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
 
 <div class="hero-section d-flex align-items-center justify-content-center text-center text-white" style="min-height: 100vh; position: relative; overflow: hidden;">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;">
         <div class="carousel-inner h-100">
-            <div class="carousel-item active h-100" data-bs-interval="5000"><img src="img/sliders/slide_1763541507.webp" class="d-block w-100 h-100" style="object-fit: cover;"></div>        </div>
+            <div class="carousel-item active h-100" data-bs-interval="5000"><img src="img/sliders/slide_1763541507.webp" class="d-block w-100 h-100" style="object-fit: cover;"></div>
+        </div>
     </div>
     <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: -1;"></div>
     <div class="container hero-content" style="z-index: 1;">
@@ -156,115 +157,50 @@
 
         <div class="swiper mySwiper px-2 py-4"> 
             <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                            <div class="card-body">
-                                <div class="icon-box mb-3" style="color: #d20f0f;">
-                                    <i class="fas fa-hospital fa-3x"></i>
-                                </div>
-                                <h4 class="card-title fw-bold">Sağlık</h4>
-                                <p class="card-text text-muted small">Kaman'daki sağlık seçeneklerini listele.</p>
-                                <a href="kategori.php?slug=saglik" 
-                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
-                                   style="border: 2px solid #d20f0f; color: #d20f0f; background: transparent;"
-                                   onmouseover="this.style.background='#d20f0f'; this.style.color='white';"
-                                   onmouseout="this.style.background='transparent'; this.style.color='#d20f0f';">
-                                   İncele
-                                </a>
-                            </div>
+                <div class="swiper-slide">
+                    <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                        <div class="card-body">
+                            <div class="icon-box mb-3" style="color: #d20f0f;"><i class="fas fa-hospital fa-3x"></i></div>
+                            <h4 class="card-title fw-bold">Sağlık</h4>
+                            <p class="card-text text-muted small">Kaman'daki sağlık seçeneklerini listele.</p>
+                            <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #d20f0f; color: #d20f0f; background: transparent;">İncele</a>
                         </div>
                     </div>
-                                    <div class="swiper-slide">
-                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                            <div class="card-body">
-                                <div class="icon-box mb-3" style="color: #12e23c;">
-                                    <i class="fas fa-bus fa-3x"></i>
-                                </div>
-                                <h4 class="card-title fw-bold">Ulaşım</h4>
-                                <p class="card-text text-muted small">Kaman'daki ulaşım seçeneklerini listele.</p>
-                                <a href="kategori.php?slug=ulasim" 
-                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
-                                   style="border: 2px solid #12e23c; color: #12e23c; background: transparent;"
-                                   onmouseover="this.style.background='#12e23c'; this.style.color='white';"
-                                   onmouseout="this.style.background='transparent'; this.style.color='#12e23c';">
-                                   İncele
-                                </a>
-                            </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                        <div class="card-body">
+                            <div class="icon-box mb-3" style="color: #12e23c;"><i class="fas fa-bus fa-3x"></i></div>
+                            <h4 class="card-title fw-bold">Ulaşım</h4>
+                            <p class="card-text text-muted small">Kaman'daki ulaşım seçeneklerini listele.</p>
+                            <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #12e23c; color: #12e23c; background: transparent;">İncele</a>
                         </div>
                     </div>
-                                    <div class="swiper-slide">
-                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                            <div class="card-body">
-                                <div class="icon-box mb-3" style="color: #129de2;">
-                                    <i class="fas fa-home fa-3x"></i>
-                                </div>
-                                <h4 class="card-title fw-bold">Barınma</h4>
-                                <p class="card-text text-muted small">Kaman'daki barınma seçeneklerini listele.</p>
-                                <a href="kategori.php?slug=barinma" 
-                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
-                                   style="border: 2px solid #129de2; color: #129de2; background: transparent;"
-                                   onmouseover="this.style.background='#129de2'; this.style.color='white';"
-                                   onmouseout="this.style.background='transparent'; this.style.color='#129de2';">
-                                   İncele
-                                </a>
-                            </div>
+                </div>
+
+                <div class="swiper-slide">
+                     <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                        <div class="card-body">
+                            <div class="icon-box mb-3" style="color: #129de2;"><i class="fas fa-home fa-3x"></i></div>
+                            <h4 class="card-title fw-bold">Barınma</h4>
+                            <p class="card-text text-muted small">Kaman'daki barınma seçeneklerini listele.</p>
+                            <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #129de2; color: #129de2; background: transparent;">İncele</a>
                         </div>
                     </div>
-                                    <div class="swiper-slide">
-                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                            <div class="card-body">
-                                <div class="icon-box mb-3" style="color: #f5930a;">
-                                    <i class="fas fa-utensils fa-3x"></i>
-                                </div>
-                                <h4 class="card-title fw-bold">Yeme & İçme</h4>
-                                <p class="card-text text-muted small">Kaman'daki yeme & İçme seçeneklerini listele.</p>
-                                <a href="kategori.php?slug=yeme-icme" 
-                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
-                                   style="border: 2px solid #f5930a; color: #f5930a; background: transparent;"
-                                   onmouseover="this.style.background='#f5930a'; this.style.color='white';"
-                                   onmouseout="this.style.background='transparent'; this.style.color='#f5930a';">
-                                   İncele
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                                    <div class="swiper-slide">
-                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                            <div class="card-body">
-                                <div class="icon-box mb-3" style="color: #8310d1;">
-                                    <i class="fas fa-camera fa-3x"></i>
-                                </div>
-                                <h4 class="card-title fw-bold">Gezilecek Yerler</h4>
-                                <p class="card-text text-muted small">Kaman'daki gezilecek yerler seçeneklerini listele.</p>
-                                <a href="kategori.php?slug=gezilecek-yerler" 
-                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
-                                   style="border: 2px solid #8310d1; color: #8310d1; background: transparent;"
-                                   onmouseover="this.style.background='#8310d1'; this.style.color='white';"
-                                   onmouseout="this.style.background='transparent'; this.style.color='#8310d1';">
-                                   İncele
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                                    <div class="swiper-slide">
-                        <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                            <div class="card-body">
-                                <div class="icon-box mb-3" style="color: #828282;">
-                                    <i class="fas fa-building fa-3x"></i>
-                                </div>
-                                <h4 class="card-title fw-bold">Resmi Kurumlar</h4>
-                                <p class="card-text text-muted small">Kaman'daki resmi kurumlar seçeneklerini listele.</p>
-                                <a href="kategori.php?slug=resmi-kurumlar" 
-                                   class="btn rounded-pill px-4 mt-3 stretched-link fw-bold"
-                                   style="border: 2px solid #828282; color: #828282; background: transparent;"
-                                   onmouseover="this.style.background='#828282'; this.style.color='white';"
-                                   onmouseout="this.style.background='transparent'; this.style.color='#828282';">
-                                   İncele
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                            </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
+                       <div class="card-body">
+                           <div class="icon-box mb-3" style="color: #f5930a;"><i class="fas fa-utensils fa-3x"></i></div>
+                           <h4 class="card-title fw-bold">Yeme & İçme</h4>
+                           <p class="card-text text-muted small">Kaman'daki yeme & İçme seçeneklerini listele.</p>
+                           <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #f5930a; color: #f5930a; background: transparent;">İncele</a>
+                       </div>
+                   </div>
+               </div>
+            </div>
             <div class="swiper-button-next custom-nav-btn"></div><div class="swiper-button-prev custom-nav-btn"></div><div class="swiper-pagination custom-pagination"></div>
         </div>
 
@@ -284,17 +220,24 @@
             </div>
             <div class="col-lg-7">
                 <div class="card border-0 shadow-lg overflow-hidden" style="border-radius: 30px;">
+                    
                     <model-viewer 
-                    src="mobilya-demo/img/koltuk.glb" 
-                    ios-src="mobilya-demo/img/koltuk.usdz" 
-                    alt="3D Mobilya Modeli" 
-                    ar 
-                    ar-modes="webxr scene-viewer quick-look" 
-                    camera-controls 
-                    auto-rotate 
-                    shadow-intensity="1" 
-                    style="width: 100%; height: 500px; background-color: #f8f9fa;">
-                </div>
+                        src="mobilya-demo/img/koltuk.glb" 
+                        ios-src="mobilya-demo/img/koltuk.usdz" 
+                        alt="3D Mobilya Modeli" 
+                        ar 
+                        ar-modes="webxr scene-viewer quick-look" 
+                        camera-controls 
+                        auto-rotate 
+                        shadow-intensity="1" 
+                        style="width: 100%; height: 500px; background-color: #f8f9fa;">
+                        
+                        <button slot="ar-button" id="ar-button" class="btn btn-primary fw-bold position-absolute bottom-0 end-0 m-3 rounded-pill shadow-sm">
+                            <i class="fas fa-camera me-2"></i> Odamda Gör
+                        </button>
+
+                    </model-viewer>
+                    </div>
             </div>
         </div>
         </div>
@@ -376,5 +319,4 @@
     var swiper = new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 25, loop: true, grabCursor: true, autoplay: { delay: 3500 }, pagination: { el: ".swiper-pagination", clickable: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, breakpoints: { 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
 </script>
 </body>
-
 </html>
