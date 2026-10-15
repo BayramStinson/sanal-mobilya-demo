@@ -90,119 +90,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
-  <div class="container-fluid px-4">
-    <div class="badge-logo-container"><a href="index.php"><img src="img/logo_resmi.svg" alt="Logo"></a></div>
-    <a class="navbar-brand navbar-brand-text d-none fw-bold" href="index.php">Kaman Rehberi</a>
-    <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-    
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase align-items-center">
-        
-        <li class="nav-item">
-            <a class="nav-link px-3 active" href="index.php">ANA SAYFA</a>
-        </li>
-        
-        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=saglik">SAĞLIK</a></li>
-        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=ulasim">ULAŞIM</a></li>
-        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=barinma">BARINMA</a></li>
-        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=yeme-icme">YEME & İÇME</a></li>
-        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=gezilecek-yerler">GEZİLECEK YERLER</a></li>
-        <li class="nav-item"><a class="nav-link px-3 " href="kategori.php?slug=resmi-kurumlar">RESMİ KURUMLAR</a></li>        
-        <li class="nav-item ms-2"><button class="theme-toggle-btn px-3" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
-        <li class="nav-item ms-3"><a href="admin/login.php" class="btn btn-login-custom rounded-pill px-4 fw-bold">Giriş Yap</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-<script>
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const icon = toggleBtn.querySelector('i');
-    const body = document.body;
-    if (localStorage.getItem('darkMode') === 'enabled') { body.classList.add('dark-mode'); icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-    toggleBtn.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        if (body.classList.contains('dark-mode')) { localStorage.setItem('darkMode', 'enabled'); icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-        else { localStorage.setItem('darkMode', 'disabled'); icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-    });
-</script>
-
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
-
-<div class="hero-section d-flex align-items-center justify-content-center text-center text-white" style="min-height: 100vh; position: relative; overflow: hidden;">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;">
-        <div class="carousel-inner h-100">
-            <div class="carousel-item active h-100" data-bs-interval="5000"><img src="img/sliders/slide_1763541507.webp" class="d-block w-100 h-100" style="object-fit: cover;"></div>
-        </div>
-    </div>
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: -1;"></div>
-    <div class="container hero-content" style="z-index: 1;">
-        <h1 class="display-3 fw-bold mb-3">Kaman'a Hoş Geldin!</h1>
-        <div class="row justify-content-center"><div class="col-lg-8"><p class="lead mb-4 opacity-100 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Kırşehir Ahi Evran Üniversitesi öğrencileri için hazırlanan kapsamlı yaşam rehberi.</p></div></div>
-        <a href="kesfet.php" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold mt-3 shadow-lg" style="background-color: #2561c2; border: none;">
-        <i class="fas fa-compass me-2"></i> Keşfetmeye Başla
-</a>
-    </div>
-</div>
-
-<div id="kategoriler" class="position-relative bg-white shadow-lg py-5" style="z-index: 10;">
-    <div class="curve-container" style="position: absolute; top: -50px; left: 0; width: 100%; height: 50px; overflow: hidden;"><div class="curve-shape" style="width: 150%; height: 100%; background: white; border-radius: 50% 50% 0 0 / 100% 100% 0 0; position: absolute; left: -25%; top: 0;"></div></div>
-    
-    <div class="container scroll-margin-top pt-3">
-        <div class="text-center mb-5">
-            <span class="text-uppercase text-primary fw-bold small tracking-wider">REHBER KATEGORİLERİ</span>
-            <h2 class="fw-bold text-dark display-6 mt-2">Şehri Keşfet</h2>
-        </div>
-
-        <div class="swiper mySwiper px-2 py-4"> 
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                        <div class="card-body">
-                            <div class="icon-box mb-3" style="color: #d20f0f;"><i class="fas fa-hospital fa-3x"></i></div>
-                            <h4 class="card-title fw-bold">Sağlık</h4>
-                            <p class="card-text text-muted small">Kaman'daki sağlık seçeneklerini listele.</p>
-                            <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #d20f0f; color: #d20f0f; background: transparent;">İncele</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide">
-                    <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                        <div class="card-body">
-                            <div class="icon-box mb-3" style="color: #12e23c;"><i class="fas fa-bus fa-3x"></i></div>
-                            <h4 class="card-title fw-bold">Ulaşım</h4>
-                            <p class="card-text text-muted small">Kaman'daki ulaşım seçeneklerini listele.</p>
-                            <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #12e23c; color: #12e23c; background: transparent;">İncele</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                     <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                        <div class="card-body">
-                            <div class="icon-box mb-3" style="color: #129de2;"><i class="fas fa-home fa-3x"></i></div>
-                            <h4 class="card-title fw-bold">Barınma</h4>
-                            <p class="card-text text-muted small">Kaman'daki barınma seçeneklerini listele.</p>
-                            <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #129de2; color: #129de2; background: transparent;">İncele</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="card h-100 shadow-sm kategori-kart text-center p-4 border-0">
-                       <div class="card-body">
-                           <div class="icon-box mb-3" style="color: #f5930a;"><i class="fas fa-utensils fa-3x"></i></div>
-                           <h4 class="card-title fw-bold">Yeme & İçme</h4>
-                           <p class="card-text text-muted small">Kaman'daki yeme & İçme seçeneklerini listele.</p>
-                           <a href="#" class="btn rounded-pill px-4 mt-3 stretched-link fw-bold" style="border: 2px solid #f5930a; color: #f5930a; background: transparent;">İncele</a>
-                       </div>
-                   </div>
-               </div>
-            </div>
-            <div class="swiper-button-next custom-nav-btn"></div><div class="swiper-button-prev custom-nav-btn"></div><div class="swiper-pagination custom-pagination"></div>
-        </div>
 
         <div class="row mt-5 pt-5 align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
@@ -247,7 +135,7 @@
             </div>
         </div>
         </div>
-    <footer class="bg-dark text-white text-center py-4 mt-5"><div class="container"><small>&copy; 2025 Kaman Rehberi</small></div></footer>
+  
 </div>
 
 <style>
